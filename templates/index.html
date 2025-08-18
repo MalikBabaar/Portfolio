@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home - AI Portfolio{% endblock %}
+
+{% block content %}
+<h1>{{ name }}</h1>
+<p><strong>Title:</strong> AI Intern at Systems Limited</p>
+<p><strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a></p>
+<p><strong>Location:</strong> {{ location }}</p>
+<p><strong>Phone:</strong> {{ phone }}</p>
+
+<h2>About Me</h2>
+<p>{{ about }}</p>
+
+<h2>Skills</h2>
+<div class="row">
+  {% for skill in skills %}
+  <div class="col-6 col-md-3 mb-2">
+    <span class="badge bg-secondary p-2">{{ skill }}</span>
+  </div>
+  {% endfor %}
+</div>
+
+<h2>Education</h2>
+<ul>
+  {% for edu in education %}
+  <li><strong>{{ edu.degree }}</strong> - {{ edu.institution }} ({{ edu.year }})</li>
+  {% endfor %}
+</ul>
+{% endblock %}

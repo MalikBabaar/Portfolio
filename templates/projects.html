@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Projects - AI Portfolio{% endblock %}
+
+{% block content %}
+<h1>My Projects</h1>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for project in projects %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+        {% if project.url != "#" %}
+        <a href="{{ project.url }}" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
+        {% else %}
+        <button class="btn btn-secondary" disabled>No Link</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}About - AI Portfolio{% endblock %}
+
+{% block content %}
+<h1>About Me</h1>
+<p><strong>Name:</strong> {{ name }}</p>
+<p><strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a></p>
+<p><strong>Location:</strong> {{ location }}</p>
+<p><strong>Phone:</strong> {{ phone }}</p>
+
+<h2>About</h2>
+<p>{{ about }}</p>
+{% endblock %}
