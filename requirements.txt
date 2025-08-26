@@ -1,3 +1,7 @@
-pytest
 Flask==2.0.3
-#Werkzeug==2.0.3
+Werkzeug==2.0.3
+Jinja2==3.1.6
+itsdangerous==2.2.0
+click==8.1.8
+MarkupSafe==2.1.5
+pytest==7.4.0
