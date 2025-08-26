@@ -5,7 +5,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy your entire Portfolio folder content to /app
-COPY ./Portfolio /usr/share/nginx/html
+COPY . /usr/share/nginx/html
 
 # Install dependencies
 # (Make sure you have requirements.txt inside Portfolio folder)
