@@ -2,12 +2,17 @@ FROM python:3.8-slim
 
 WORKDIR /app
 
-# Copy only the files you need
+# Copy only requirements file first to leverage Docker cache
 COPY requirements.txt .
+
+# Install python packages from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Then copy the rest of your app
+# Copy the rest of the app source code
 COPY . .
 
+# Expose the port your app listens on (change if needed)
 EXPOSE 8080
-CMD ["python", "app.py"]  # Replace with your actual entry point
+
+# Command to run your app (replace app.py with your entry point)
+CMD ["python", "app.py"]
