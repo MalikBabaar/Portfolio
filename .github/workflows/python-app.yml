@@ -1,4 +1,4 @@
-name: Python Flask CI
+name: Python Flask CI with Docker
 
 on:
   push:
@@ -26,3 +26,25 @@ jobs:
     - name: Run tests
       run: |
         pytest test_app.py
+
+    # === Docker related steps ===
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Docker image
+      run: docker build -t my-portfolio-app .
+
+    - name: Run Docker container
+      run: |
+        docker run -d --name test-container -p 8080:5000 my-portfolio-app
+        sleep 10  # wait for container to be ready
+
+    - name: Test container HTTP response
+      run: |
+        curl -f http://localhost:8080 || (echo "Container not reachable" && exit 1)
+
+    - name: Stop and remove Docker container
+      run: |
+        docker stop test-container
+        docker rm test-container
